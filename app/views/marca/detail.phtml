@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <form id="myForm" action="<?= URL . 'marca/save' ?>" method="post">
+                <input type="hidden" name="idmarca" value="<?= $data->IdMarca ?>">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input placeholder="Nombre" required pattern="[A-Za-z0-9]{5,50}" title="Solo letras y números. Tamaño mínimo: 5. Tamaño máximo: 50" type="text" name="nombre" id="id_nombre" class="form-control" value="<?= $data->Nombre ?>">
+
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <label for="descripcion">Descripcion</label>
+                            <input placeholder="Descripción" required title="Solo letras y números. Tamaño mínimo: 5. Tamaño máximo: 100" type="text" name="descripcion" id="id_descripcion" class="form-control" value="<?= $data->Descripcion ?>">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group form-check">
+                            <input type="checkbox" name="estado" class="form-check-input" id="id_estado" <?= ($data->Estado == 1) ? 'checked' : '' ?>>
+
+                            <label class="form-check-label" for="id_estado">Estado</label>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-8">
+                        <div id="mis_errores">
+                        </div>
+                    </div>
+                </div>
+        
+        <br>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+                </div>
+            </div>
+        </div>
+
+        </form>
+    </div>
+</div>
+</div>

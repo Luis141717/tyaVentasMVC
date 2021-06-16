@@ -1,0 +1,61 @@
+<?php
+$this->layout('../layouts/layout',[
+    'title' => 'Xoluciones  | Comprobantes'
+]);
+?>
+
+<?php $this->push('styles')?>
+<!-- Estilos personalizados -->
+<?php $this->end()?>
+
+<?php $this->start('contents')?>
+<!-- Contenido de la pagina -->
+<div class="container">
+    <h1>Comprobantes</h1>
+    <div class="row">
+            <div class="col-sm-4">
+                <a is-modal="true" href="<?= URL . 'comprobante/detail' ?>" class="btn btn-primary btn-block">Nuevo</a>
+            </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width: 10%">ID</th>
+                        <th style="width: 70%">NOMBRE</th>
+                        <th style="width: 20%"></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <?php foreach($data as $row): ?>
+                        <tr>
+                            <td><?= $row->IdComprobante ?></td>
+                            <td><?= $row->Nombre ?></td>
+                            <td>
+                                <a is-modal="true" href="<?= URL . "comprobante/detail/{$row->IdComprobante}" ?>" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
+                                <a href="<?= URL . "comprobante/delete/{$row->IdComprobante}" ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+</div>
+<?php $this->stop()?>
+
+<?php $this->start('myModal')?>
+<?php
+$title = 'Comprobante Detalle - Insertar';
+$size = GRANDE;
+include MAINPATH . 'app/views/layouts/partials/_modalGenerico.phtml'
+?>
+<?php $this->stop()?>
+
+<?php $this->push('scripts')?>
+<script src="<?=URL.'js/scripts/modal_crud.js'?>"></script>
+<?php $this->end()?>
